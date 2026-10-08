@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evolução Cronológica (1968–2026) | PRINTX</title>
+    <meta name="description" content="Evolução cronológica da engenharia de impressão desde o impacto mecânico matricial até a eletrofotografia a laser e manufatura aditiva 3D." />
+    
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@500;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="noise-overlay" aria-hidden="true"></div>
+    <div class="ambient-glow cyan" aria-hidden="true"></div>
+    <div class="ambient-glow violet" aria-hidden="true"></div>
+
+    <canvas id="webgl-bg-canvas" aria-hidden="true"></canvas>
+
+    <div class="page-curtain" aria-hidden="true">
+        <div class="curtain-bar"></div>
+        <div class="curtain-brand">PRINTX // ARQUIVO CRONOLÓGICO</div>
+    </div>
+
+    <div class="custom-cursor-dot" aria-hidden="true"></div>
+    <div class="custom-cursor-ring" aria-hidden="true"><span class="cursor-text">DISTORCER</span></div>
+
+    <!-- Floating Navbar -->
+    <div class="navbar-wrap">
+        <header class="navbar" role="banner">
+            <a href="index.html" class="logo" data-cursor="HOME">
+                PRINT<span>X</span>
+                <span class="logo-badge">CRONOLOGIA</span>
+            </a>
+
+            <nav class="nav-links" role="navigation">
+                <a href="index.html" data-cursor="INDEX" data-i18n="nav_overview">Visão Geral</a>
+                <a href="history.html" class="active" data-cursor="TIMELINE" data-i18n="nav_history">História</a>
+                <a href="fundamentals.html" data-cursor="MECHANICS" data-i18n="nav_fundamentals">Fundamentos</a>
+                <a href="summary.html" data-cursor="SPECS" data-i18n="nav_summary">Matriz de Specs</a>
+            </nav>
+
+            <div class="nav-controls">
+                <button type="button" class="lang-toggle-btn" aria-label="Alternar Idioma (PT / EN)" data-cursor="IDIOMA">
+                    <span class="lang-flag" aria-hidden="true">🇧🇷</span>
+                    <span class="lang-label">PT</span>
+                </button>
+
+                <button type="button" class="audio-toggle-btn" aria-label="Ativar/Desativar Efeitos Sonoros">
+                    <span class="audio-waves" aria-hidden="true">
+                        <span class="audio-bar"></span>
+                        <span class="audio-bar"></span>
+                        <span class="audio-bar"></span>
+                    </span>
+                    <span class="audio-state-text">SOM: MUDO</span>
+                </button>
+            </div>
+        </header>
+    </div>
+
+    <main id="main-content">
+        <!-- History Hero -->
+        <section class="history-hero" aria-label="Introdução Histórica">
+            <div class="container">
+                <div class="badge-tech">
+                    <span class="pulse-dot"></span>
+                    <span data-i18n="history_hero_badge">TAXONOMIA HISTÓRICA // 1968 AO PRESENTE</span>
+                </div>
+
+                <h1 class="hero-super-title">
+                    <span class="kinetic-title" data-i18n="history_title_1">EVOLUÇÃO</span><br />
+                    <span class="kinetic-title gradient-span" data-i18n="history_title_2">CRONOLÓGICA DA IMPRESSÃO</span>
+                </h1>
+
+                <p class="hero-desc-editorial" style="margin: 0 auto 3rem auto;" data-i18n="history_desc">
+                    Acompanhe o traço óptico através de 6 décadas de solenoides mecânicos, vaporização microfluídica, eletrofotografia a laser e polímeros aditivos.
+                </p>
+
+                <div class="hero-telemetry-grid" style="max-width: 900px; margin: 0 auto; margin-top: 2rem;">
+                    <div class="telemetry-item">
+                        <div class="telemetry-label">Primeira Microimpressora</div>
+                        <div class="telemetry-value">1968<span>EPSON EP-101</span></div>
+                    </div>
+                    <div class="telemetry-item">
+                        <div class="telemetry-label">Lançamento Laser Desktop</div>
+                        <div class="telemetry-value">1984<span>HP LASERJET</span></div>
+                    </div>
+                    <div class="telemetry-item">
+                        <div class="telemetry-label">Primeira Patente SLA 3D</div>
+                        <div class="telemetry-value">1986<span>3D SYSTEMS</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chronological Timeline Section with SVG Scrub Path -->
+        <section class="history-timeline-section" aria-label="Marcos Históricos Interativos">
+            <!-- Scrubbed SVG Connecting Line -->
+            <div class="timeline-svg-wrap" aria-hidden="true">
+                <svg viewBox="0 0 100 2400" preserveAspectRatio="none">
+                    <path class="timeline-bg-line" d="M 50 0 Q 30 300 50 600 T 50 1200 T 50 1800 T 50 2400" />
+                    <path class="timeline-scrub-line" d="M 50 0 Q 30 300 50 600 T 50 1200 T 50 1800 T 50 2400" />
+                </svg>
+            </div>
+
+            <div class="container">
+                <div class="timeline-nodes-wrap">
+
+                    <!-- Milestone 1: 1968-1970 -->
+                    <div class="timeline-milestone">
+                        <article class="milestone-card" data-cursor="INSPECIONAR">
+                            <span class="mono-tag">// MARCO HISTÓRICO 01</span>
+                            <h3>Gênese do Impacto: Epson EP-101 &amp; Centronics 101</h3>
+                            <p>
+                                Em 1968, a Shinshu Seiki (posteriormente Epson) projetou a EP-101 ("Electronic Printer"), a primeira microimpressora digital do mundo construída para os cronômetros das Olimpíadas de Tóquio. Em 1970, a Centronics lançou a Centronics 101, introduzindo o cabeçote matricial de 7 agulhas acionadas por solenoide e o icônico padrão de porta paralela Centronics.
+                            </p>
+                            <div class="milestone-pills">
+                                <span class="milestone-pill">Arquitetura EP-101</span>
+                                <span class="milestone-pill">7 Agulhas Solenoides</span>
+                                <span class="milestone-pill">Porta Paralela Centronics</span>
+                            </div>
+                        </article>
+
+                        <div class="milestone-center-node">
+                            <div class="milestone-node-circle" data-cursor="WARP" aria-label="Marco 1968-1970"></div>
+                        </div>
+
+                        <div class="milestone-date-meta">
+                            <div class="milestone-era">1968</div>
+                            <div class="milestone-category">Mecânica de Impacto</div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 2: 1971-1977 -->
+                    <div class="timeline-milestone">
+                        <div class="milestone-date-meta">
+                            <div class="milestone-era">1971</div>
+                            <div class="milestone-category">Eletrofotografia a Laser</div>
+                        </div>
+
+                        <div class="milestone-center-node">
+                            <div class="milestone-node-circle" data-cursor="WARP" aria-label="Marco 1971"></div>
+                        </div>
+
+                        <article class="milestone-card" data-cursor="INSPECIONAR">
+                            <span class="mono-tag">// MARCO HISTÓRICO 02</span>
+                            <h3>Gary Starkweather &amp; O Motor Xerox 9700</h3>
+                            <p>
+                                No lendário Xerox PARC, o engenheiro Gary Starkweather modificou uma fotocopiadora xerográfica integrando um espelho poligonal giratório e um laser de hélio-neônio, inventando a impressora a laser. Essa pesquisa pioneira culminou na Xerox 9700 em 1977—o primeiro sistema laser comercial de alta produção do mundo, operando a impressionantes 120 páginas por minuto.
+                            </p>
+                            <div class="milestone-pills">
+                                <span class="milestone-pill">Laboratório Xerox PARC</span>
+                                <span class="milestone-pill">Espelho Poligonal Giratório</span>
+                                <span class="milestone-pill">Produção de 120 PPM</span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Milestone 3: 1977-1984 -->
+                    <div class="timeline-milestone">
+                        <article class="milestone-card" data-cursor="INSPECIONAR">
+                            <span class="mono-tag">// MARCO HISTÓRICO 03</span>
+                            <h3>O Duelo do Jato de Tinta: BubbleJet vs. Micro Piezo</h3>
+                            <p>
+                                Em 1977, o pesquisador Ichiro Endo na Canon descobriu acidentalmente a ejeção térmica de gotas quando a ponta aquecida de um ferro de solda tocou uma agulha hipodérmica cheia de tinta, patenteando o "Bubble Jet". Simultaneamente, a HP desenvolveu cartuchos de vaporização térmica que deram origem à HP ThinkJet (1984). Mais tarde, a Epson aperfeiçoou a tecnologia Micro Piezo, acionando cristais piezelétricos com pulsos elétricos para disparar microgotículas a frio sem ferver a tinta.
+                            </p>
+                            <div class="milestone-pills">
+                                <span class="milestone-pill">Bolha Térmica de Endo</span>
+                                <span class="milestone-pill">HP ThinkJet (1984)</span>
+                                <span class="milestone-pill">Epson Micro Piezo (1993)</span>
+                            </div>
+                        </article>
+
+                        <div class="milestone-center-node">
+                            <div class="milestone-node-circle" data-cursor="WARP" aria-label="Marco 1977-1984"></div>
+                        </div>
+
+                        <div class="milestone-date-meta">
+                            <div class="milestone-era">1984</div>
+                            <div class="milestone-category">Microfluídica Gota-por-Demanda</div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 4: 1986-1989 -->
+                    <div class="timeline-milestone">
+                        <div class="milestone-date-meta">
+                            <div class="milestone-era">1986</div>
+                            <div class="milestone-category">Manufatura Aditiva 3D</div>
+                        </div>
+
+                        <div class="milestone-center-node">
+                            <div class="milestone-node-circle" data-cursor="WARP" aria-label="Marco 1986-1989"></div>
+                        </div>
+
+                        <article class="milestone-card" data-cursor="INSPECIONAR">
+                            <span class="mono-tag">// MARCO HISTÓRICO 04</span>
+                            <h3>Gênese Aditiva: Chuck Hull (SLA) &amp; Scott Crump (FDM)</h3>
+                            <p>
+                                Em 1986, Chuck Hull patenteou a Estereolitografia (US Pat. 4.575.330) e fundou a 3D Systems, utilizando lasers UV para solidificar resinas fotopoliméricas camada por camada. Três anos depois, em 1989, S. Scott Crump patenteou a Modelagem por Fusão e Deposição (FDM, US Pat. 5.121.329) e cofundou a Stratasys, inventando a extrusão mecânica de filamentos termoplásticos e inaugurando a era moderna da prototipagem rápida.
+                            </p>
+                            <div class="milestone-pills">
+                                <span class="milestone-pill">Estereolitografia (SLA)</span>
+                                <span class="milestone-pill">Extrusão Termoplástica (FDM)</span>
+                                <span class="milestone-pill">Patente EUA 4.575.330</span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Milestone 5: Modern Era & Beyond -->
+                    <div class="timeline-milestone">
+                        <article class="milestone-card" data-cursor="INSPECIONAR">
+                            <span class="mono-tag">// MARCO HISTÓRICO 05</span>
+                            <h3>Fotopolimerização de Alta Velocidade &amp; Sinterização Metálica</h3>
+                            <p>
+                                A fronteira moderna da manufatura aditiva destaca a tecnologia CLIP (Continuous Liquid Interface Production / Carbon3D), com janelas de permeabilidade ao oxigênio que eliminam etapas lentas de sucção, permitindo velocidades comparáveis a moldes de injeção. Na indústria pesada, a Sinterização Direta a Laser de Metais (DMLS) produz componentes aeroespaciais em titânio, enquanto no papel matrizes fixas de jato de tinta cobrem folhas inteiras a mais de 300 metros por minuto.
+                            </p>
+                            <div class="milestone-pills">
+                                <span class="milestone-pill">Fotopolimerização Contínua CLIP</span>
+                                <span class="milestone-pill">Sinterização a Laser DMLS</span>
+                                <span class="milestone-pill">Matrizes Estacionárias Web</span>
+                            </div>
+                        </article>
+
+                        <div class="milestone-center-node">
+                            <div class="milestone-node-circle" data-cursor="WARP" aria-label="Marco Atual"></div>
+                        </div>
+
+                        <div class="milestone-date-meta">
+                            <div class="milestone-era">2026</div>
+                            <div class="milestone-category">Síntese Aditiva Submícron</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-main">
+        <div class="container">
+            <div class="footer-bottom">
+                <span>&copy; 2026 PRINTX ENGINEERING RESEARCH. ATIVIDADE ACADÊMICA A1.</span>
+                <span>TRAÇO ÓPTICO SCRUBBED &bull; THREE.JS DISTORTION WARP &bull; PT-BR</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Production CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Modular Script Engines -->
+    <script src="canvas3d.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

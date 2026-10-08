@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRINTX | Engenharia da Impressão &amp; Manufatura Aditiva</title>
+    <meta name="description"
+        content="Uma experiência digital e imersiva de nível editorial dissecando matricial de impacto, jato de tinta térmico/piezo, xerografia a laser em 6 etapas e manufatura aditiva 3D." />
+
+    <!-- Design System Stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@500;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Noise Grain Overlay -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- Ambient Radial Glow Spots -->
+    <div class="ambient-glow cyan" aria-hidden="true"></div>
+    <div class="ambient-glow violet" aria-hidden="true"></div>
+
+    <!-- WebGL Background Canvas -->
+    <canvas id="webgl-bg-canvas" aria-hidden="true"></canvas>
+
+    <!-- Dynamic Page Transition Curtain -->
+    <div class="page-curtain" aria-hidden="true">
+        <div class="curtain-bar"></div>
+        <div class="curtain-brand">PRINTX // NÚCLEO DE PRECISÃO</div>
+    </div>
+
+    <!-- Liquid Trailing Magnetic Cursor -->
+    <div class="custom-cursor-dot" aria-hidden="true"></div>
+    <div class="custom-cursor-ring" aria-hidden="true"><span class="cursor-text">VER</span></div>
+
+    <!-- Floating Glassmorphic Header -->
+    <div class="navbar-wrap">
+        <header class="navbar" role="banner">
+            <a href="index.html" class="logo" data-cursor="HOME" aria-label="PRINTX Home">
+                PRINT<span>X</span>
+                <span class="logo-badge">ENGENHARIA</span>
+            </a>
+
+            <nav class="nav-links" role="navigation" aria-label="Navegação Principal">
+                <a href="index.html" class="active" data-cursor="INDEX" data-i18n="nav_overview">Visão Geral</a>
+                <a href="history.html" data-cursor="TIMELINE" data-i18n="nav_history">História</a>
+                <a href="fundamentals.html" data-cursor="MECHANICS" data-i18n="nav_fundamentals">Fundamentos</a>
+                <a href="summary.html" data-cursor="SPECS" data-i18n="nav_summary">Matriz de Specs</a>
+            </nav>
+
+            <div class="nav-controls">
+                <!-- Language Toggle Button [EN | PT] -->
+                <button type="button" class="lang-toggle-btn" aria-label="Alternar Idioma (PT / EN)"
+                    data-cursor="IDIOMA">
+                    <span class="lang-flag" aria-hidden="true">🇧🇷</span>
+                    <span class="lang-label">PT</span>
+                </button>
+
+                <!-- Audio Toggle Button -->
+                <button type="button" class="audio-toggle-btn" aria-label="Ativar/Desativar Efeitos Sonoros">
+                    <span class="audio-waves" aria-hidden="true">
+                        <span class="audio-bar"></span>
+                        <span class="audio-bar"></span>
+                        <span class="audio-bar"></span>
+                    </span>
+                    <span class="audio-state-text">SOM: MUDO</span>
+                </button>
+            </div>
+        </header>
+    </div>
+
+    <main id="main-content">
+        <!-- Hero Section with Kinetic Split Typography & Telemetry HUD -->
+        <section class="hero-editorial" aria-label="Introdução Hero">
+            <!-- Engineering HUD Telemetry -->
+            <div class="hero-editorial-hud" aria-hidden="true">
+                <div class="hud-item" data-i18n="hud_system">SISTEMA // NÚCLEO.PRECISÃO.PRINT-X</div>
+                <div class="hud-item" data-i18n="hud_tolerance">TOLERÂNCIA GEOMÉTRICA // 0.005 MM</div>
+                <div class="hud-item" data-i18n="hud_render">RENDER // SHADER WEBGL THREE.JS</div>
+            </div>
+
+            <div class="container">
+                <div class="hero-main-content">
+                    <div class="badge-tech">
+                        <span class="pulse-dot"></span>
+                        <span data-i18n="badge_academic">ATIVIDADE ACADÊMICA A1 // ENGENHARIA MECÂNICA &amp;
+                            COMPUTAÇÃO</span>
+                    </div>
+
+                    <!-- Kinetic Typography Title with masked vectors -->
+                    <h1 class="hero-super-title">
+                        <span class="kinetic-title" data-i18n="hero_title_1">ENGENHARIA</span><br />
+                        <span class="kinetic-title gradient-span" data-i18n="hero_title_2">DA PALAVRA
+                            IMPRESSA</span><br />
+                        <span class="kinetic-title" data-i18n="hero_title_3">&amp; MANUFATURA ADITIVA</span>
+                    </h1>
+
+                    <p class="hero-desc-editorial" data-i18n="hero_desc">
+                        Uma imersão editorial interativa dissecando o impacto mecânico por solenoides, microfluídica
+                        gota-por-demanda picolitro, xerografia eletrofotográfica em 6 etapas e fotopolimerização aditiva
+                        3D camada por camada.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="fundamentals.html" class="btn btn-primary" data-cursor="EXPLORAR">
+                            <span data-i18n="btn_explore">Iniciar Simuladores 3D</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                        <a href="summary.html" class="btn btn-secondary" data-cursor="COMPARAR">
+                            <span data-i18n="btn_compare">Comparar Matriz de Specs</span>
+                        </a>
+                        <a href="history.html" class="btn btn-secondary" data-cursor="HISTORIA">
+                            <span data-i18n="btn_history">Cronologia (1968–2026)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Precision Telemetry Grid -->
+                <div class="hero-telemetry-grid">
+                    <div class="telemetry-item">
+                        <div class="telemetry-label" data-i18n="telemetry_res">Resolução Máxima de Gotas</div>
+                        <div class="telemetry-value">5760<span>DPI</span></div>
+                    </div>
+                    <div class="telemetry-item">
+                        <div class="telemetry-label" data-i18n="telemetry_pico">Volume por Gota Picolitro</div>
+                        <div class="telemetry-value">1.5<span>pL</span></div>
+                    </div>
+                    <div class="telemetry-item">
+                        <div class="telemetry-label" data-i18n="telemetry_laser">Tensão de Carga do Cilindro</div>
+                        <div class="telemetry-value">-600<span>V</span></div>
+                    </div>
+                    <div class="telemetry-item">
+                        <div class="telemetry-label" data-i18n="telemetry_sla">Comprimento de Onda UV SLA</div>
+                        <div class="telemetry-value">405<span>nm</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Horizontal Scroll Pinning Showcase (4 Core Categories) -->
+        <section class="horizontal-section" aria-label="Vitrine Horizontal dos Quatro Paradigmas">
+            <div class="horizontal-pin-wrap">
+                <div class="horizontal-header">
+                    <div>
+                        <span class="mono-tag">// TAXONOMIA ARQUITETURAL</span>
+                        <h2 class="kinetic-title" data-i18n="tax_title">Quatro Paradigmas Fundamentais</h2>
+                    </div>
+                    <p style="max-width: 380px; font-size: 0.9rem;" data-i18n="tax_sub">
+                        Role verticalmente para percorrer nossa vitrine horizontal de engenharia através do impacto
+                        físico, microjatos líquidos, toner óptico e camadas aditivas.
+                    </p>
+                </div>
+
+                <div class="horizontal-track">
+                    <!-- Card 1: Dot Matrix -->
+                    <article class="horizontal-card" data-cursor="IMPACTO">
+                        <span class="card-num">01</span>
+                        <div>
+                            <div class="card-tech-category" data-i18n="card_1_cat">Mecânica de Impacto</div>
+                            <h3 class="card-tech-title" data-i18n="card_1_title">Cabeçote Matricial</h3>
+                            <p class="card-tech-desc" data-i18n="card_1_desc">
+                                Agulhas de tungstênio acionadas por solenoides impactando fita entintada diretamente
+                                contra formulários contínuos, sintetizando vias carbonadas sob pressão mecânica.
+                            </p>
+                        </div>
+
+                        <div class="card-spec-row">
+                            <span>Atuação</span>
+                            <span data-i18n="card_1_spec_1">Pulsos Eletromagnéticos</span>
+                        </div>
+                        <div class="card-spec-row">
+                            <span>Velocidade</span>
+                            <span data-i18n="card_1_spec_2">100 – 600 Caracteres/s</span>
+                        </div>
+                        <div class="card-spec-row">
+                            <span>Diferencial</span>
+                            <span data-i18n="card_1_spec_3">Vias Múltiplas de Carbono</span>
+                        </div>
+
+                        <a href="fundamentals.html#dot-matrix" class="card-footer-link" data-i18n="card_1_link">
+                            Inspecionar Simulador Matricial &rarr;
+                        </a>
+                    </article>
+
+                    <!-- Card 2: Inkjet Drop-on-Demand -->
+                    <article class="horizontal-card" data-cursor="FLUIDO">
+                        <span class="card-num">02</span>
+                        <div>
+                            <div class="card-tech-category" data-i18n="card_2_cat">Microfluídica</div>
+                            <h3 class="card-tech-title" data-i18n="card_2_title">Jato de Tinta por Demanda</h3>
+                            <p class="card-tech-desc" data-i18n="card_2_desc">
+                                Expulsão microscópica de fluido governada por nucleação de bolhas de vapor a 300°C
+                                (Térmica) ou deformação mecânica de cristal piezelétrico (Piezo).
+                            </p>
+                        </div>
+
+                        <div class="card-spec-row">
+                            <span>Orifício</span>
+                            <span data-i18n="card_2_spec_1">15 a 25 Microns</span>
+                        </div>
+                        <div class="card-spec-row">
+                            <span>Volume</span>
+                            <span data-i18n="card_2_spec_2">Gotículas de 1.0 a 5.0 pL</span>
+                        </div>
+                        <div class="card-spec-row">
+                            <span>Diferencial</span>
+                            <span data-i18n="card_2_spec_3">Gama Contínua de Cores</span>
+                        </div>
+
+                        <a href="fundamentals.html#inkjet" class="card-footer-link" data-i18n="card_2_link">
+                            Comparar Térmico vs Piezo &rarr;
+                        </a>
+                    </article>
+
+                    <!-- Card 3: Laser Xerography -->
+                    <article class="horizontal-card" data-cursor="LASER">
+                        <span class="card-num">03</span>
+                        <div>
+                            <div class="card-tech-category" data-i18n="card_3_cat">Eletrofotografia</div>
+                            <h3 class="card-tech-title" data-i18n="card_3_title">Xerografia a Laser</h3>
+                            <p class="card-tech-desc" data-i18n="card_3_desc">
+                                Cilindro fotorreceptor orgânico (OPC) rotativo sensibilizado por varredura laser,
+                                atração eletrostática de pó de toner e rolos térmicos de fusão.
+                            </p>
+                        </div>
+
+                        <div class="card-spec-row">
+                            <span>Potencial</span>
+                            <span data-i18n="card_3_spec_1">Carga Primária de -600V</span>
+                        </div>
+                        <div class="card-spec-row">
+                            <span>Fusor</span>
+                            <span data-i18n="card_3_spec_2">Fusão a 180°C – 210°C</span>
+                        </div>
+                        <div class="card-spec-row">
+                            <span>Diferencial</span>
+                            <span data-i18n="card_3_spec_3">Alta Velocidade (70+ PPM)</span>
+                        </div>
+
+                        <a href="fundamentals.html#laser" class="card-footer-link" data-i18n="card_3_link">
+                            Executar Ciclo de 6 Etapas &rarr;
+                        </a>
+                    </article>
+
+                    <!-- Card 4: Additive Manufacturing -->
+                    <article class="horizontal-card" data-cursor="3D ADITIVA">
+                        <span class="card-num">04</span>
+                        <div>
+                            <div class="card-tech-category" data-i18n="card_4_cat">Manufatura Aditiva</div>
+                            <h3 class="card-tech-title" data-i18n="card_4_title">Impressão 3D FDM &amp; SLA</h3>
+                            <p class="card-tech-desc" data-i18n="card_4_desc">
+                                Síntese geométrica aditiva camada por camada via extrusão de filamento termoplástico
+                                (FDM) ou cura ultravioleta 405nm de resina fotopolimérica (SLA).
+                            </p>
+                        </div>
+
+                        <div class="card-spec-row">
+                            <span>Resolução Z</span>
+                            <span data-i18n="card_4_spec_1">10 a 200 µm</span>
+                        </div>
+                        <div class="card-spec-row">
+                            <span>Protocolo</span>
+                            <span data-i18n="card_4_spec_2">Trajetória G-Code Cartesiana</span>
+                        </div>
+                        <div class="card-spec-row">
+                            <span>Diferencial</span>
+                            <span data-i18n="card_4_spec_3">Complexidade Geométrica Livre</span>
+                        </div>
+
+                        <a href="fundamentals.html#3d-printing" class="card-footer-link" data-i18n="card_4_link">
+                            Simular Trajetória G-Code &rarr;
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>PRINT<span>X</span></h4>
+                    <p>Dossiê educacional de engenharia mecânica e computação para Atividade Acadêmica A1 da disciplina
+                        de CIN7139-01324C.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Navegação</h5>
+                    <ul>
+                        <li><a href="index.html">Visão Geral Hero</a></li>
+                        <li><a href="history.html">Linha do Tempo Cronológica</a></li>
+                        <li><a href="fundamentals.html">Simuladores Interativos</a></li>
+                        <li><a href="summary.html">Matriz Comparativa de Specs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Simuladores</h5>
+                    <ul>
+                        <li><a href="fundamentals.html#dot-matrix">Solenoide Matricial</a></li>
+                        <li><a href="fundamentals.html#inkjet">Térmico vs. Piezo</a></li>
+                        <li><a href="fundamentals.html#laser">Xerografia 6 Etapas</a></li>
+                        <li><a href="fundamentals.html#3d-printing">FDM &amp; SLA 3D</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>INTEGRANTES</h5>
+                    <ul>
+                        <li><a href="#main-content">Caique Mendes dos Reis</a></li>
+                        <li><a href="#main-content">Eduardo Djalma Soares</a></li>
+                        <li><a href="#main-content"></a>Rudiel Cantro</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 PRINTX ENGINEERING RESEARCH. ATIVIDADE ACADÊMICA A1.</span>
+                <span>PADRÃO AWWWARDS SOTD &bull; BILINGUAL PT-BR / EN</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Production CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Modular Script Engines -->
+    <script src="canvas3d.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

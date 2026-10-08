@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matriz Comparativa de Especificações | PRINTX</title>
+    <meta name="description" content="Matriz quantitativa de especificações comparando matricial de impacto, jato de tinta, laser xerográfico e manufatura aditiva 3D." />
+    
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@500;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="noise-overlay" aria-hidden="true"></div>
+    <div class="ambient-glow cyan" aria-hidden="true"></div>
+    <div class="ambient-glow violet" aria-hidden="true"></div>
+
+    <canvas id="webgl-bg-canvas" aria-hidden="true"></canvas>
+
+    <div class="page-curtain" aria-hidden="true">
+        <div class="curtain-bar"></div>
+        <div class="curtain-brand">PRINTX // MATRIZ QUANTITATIVA</div>
+    </div>
+
+    <div class="custom-cursor-dot" aria-hidden="true"></div>
+    <div class="custom-cursor-ring" aria-hidden="true"><span class="cursor-text">FILTRAR</span></div>
+
+    <!-- Floating Navbar -->
+    <div class="navbar-wrap">
+        <header class="navbar" role="banner">
+            <a href="index.html" class="logo" data-cursor="HOME">
+                PRINT<span>X</span>
+                <span class="logo-badge">MATRIZ</span>
+            </a>
+
+            <nav class="nav-links" role="navigation">
+                <a href="index.html" data-cursor="INDEX" data-i18n="nav_overview">Visão Geral</a>
+                <a href="history.html" data-cursor="TIMELINE" data-i18n="nav_history">História</a>
+                <a href="fundamentals.html" data-cursor="MECHANICS" data-i18n="nav_fundamentals">Fundamentos</a>
+                <a href="summary.html" class="active" data-cursor="SPECS" data-i18n="nav_summary">Matriz de Specs</a>
+            </nav>
+
+            <div class="nav-controls">
+                <button type="button" class="lang-toggle-btn" aria-label="Alternar Idioma (PT / EN)" data-cursor="IDIOMA">
+                    <span class="lang-flag" aria-hidden="true">🇧🇷</span>
+                    <span class="lang-label">PT</span>
+                </button>
+
+                <button type="button" class="audio-toggle-btn" aria-label="Ativar/Desativar Efeitos Sonoros">
+                    <span class="audio-waves" aria-hidden="true">
+                        <span class="audio-bar"></span>
+                        <span class="audio-bar"></span>
+                        <span class="audio-bar"></span>
+                    </span>
+                    <span class="audio-state-text">SOM: MUDO</span>
+                </button>
+            </div>
+        </header>
+    </div>
+
+    <main id="main-content">
+        <!-- Summary Hero -->
+        <section class="summary-hero" aria-label="Introdução à Matriz">
+            <div class="container">
+                <div class="badge-tech">
+                    <span class="pulse-dot"></span>
+                    <span data-i18n="sum_hero_badge">BENCHMARKS QUANTITATIVOS • MATRIZ DE SPECS</span>
+                </div>
+
+                <h1 class="hero-super-title">
+                    <span class="kinetic-title" data-i18n="sum_title_1">MATRIZ</span><br />
+                    <span class="kinetic-title gradient-span" data-i18n="sum_title_2">DE DADOS &amp; COMPARAÇÃO</span>
+                </h1>
+
+                <p class="hero-desc-editorial" style="margin: 0 auto 3rem auto;" data-i18n="sum_desc">
+                    Filtre, pesquise e analise tolerâncias de engenharia, velocidade de produção (PPM/CPS), custo de consumíveis e densidade de resolução lado a lado.
+                </p>
+            </div>
+        </section>
+
+        <section class="container" aria-label="Tabela de Dados e Arena">
+            <!-- Matrix Interactive Toolbar -->
+            <div class="matrix-toolbar">
+                <div class="search-input-wrap">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--accent-cyan);"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    <input type="text" id="matrix-search-input" placeholder="Pesquisar tecnologia, DPI, consumíveis..." aria-label="Buscar tecnologias e especificações" />
+                </div>
+
+                <div class="filter-pills" role="tablist">
+                    <button type="button" class="filter-pill active" data-filter="all" data-cursor="TODOS">Todos os Motores</button>
+                    <button type="button" class="filter-pill" data-filter="impact" data-cursor="IMPACTO">Impacto</button>
+                    <button type="button" class="filter-pill" data-filter="fluid" data-cursor="FLUIDO">Microfluídica</button>
+                    <button type="button" class="filter-pill" data-filter="laser" data-cursor="LASER">Laser</button>
+                    <button type="button" class="filter-pill" data-filter="additive" data-cursor="3D">Aditiva 3D</button>
+                </div>
+            </div>
+
+            <!-- Glassmorphic Data Table -->
+            <div class="data-table-container">
+                <table class="data-table" role="table">
+                    <thead>
+                        <tr>
+                            <th data-sort="name">Tecnologia &bull; Arquitetura <span class="sort-arrow">&#8597;</span></th>
+                            <th data-sort="speed">Velocidade Nominal <span class="sort-arrow">&#8597;</span></th>
+                            <th data-sort="dpi">Resolução / Camada <span class="sort-arrow">&#8597;</span></th>
+                            <th data-sort="cost">Custo Operacional <span class="sort-arrow">&#8597;</span></th>
+                            <th>Domínio de Aplicação Primário</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Row 1: Dot Matrix -->
+                        <tr data-category="impact">
+                            <td>
+                                <strong data-key="name">Matricial de Impacto</strong><br />
+                                <span class="mono-tag">Matriz 9 / 24 Agulhas Solenoides</span>
+                            </td>
+                            <td>
+                                <span data-key="speed">100 &ndash; 600 CPS</span><br />
+                                <span class="spec-badge low-cost">Impacto Direto</span>
+                            </td>
+                            <td>
+                                <span data-key="dpi">72 &ndash; 240 DPI</span><br />
+                                <small style="color: var(--text-muted);">Letter Quality (LQ)</small>
+                            </td>
+                            <td>
+                                <span data-key="cost">&lt; R$ 0,01 / Página</span><br />
+                                <small style="color: var(--text-muted);">Cassete de Fita Entintada</small>
+                            </td>
+                            <td>
+                                Formulários contínuos, notas fiscais com cópia carbono, logística, recibos bancários.
+                            </td>
+                        </tr>
+
+                        <!-- Row 2: Inkjet Thermal -->
+                        <tr data-category="fluid">
+                            <td>
+                                <strong data-key="name">Jato Térmico (BubbleJet)</strong><br />
+                                <span class="mono-tag">Nucleação por Resistor Térmico</span>
+                            </td>
+                            <td>
+                                <span data-key="speed">15 &ndash; 35 PPM</span><br />
+                                <span class="spec-badge hi-res">Microgotas</span>
+                            </td>
+                            <td>
+                                <span data-key="dpi">4800 x 1200 DPI</span><br />
+                                <small style="color: var(--text-muted);">Gotas de 1.5 a 3.0 pL</small>
+                            </td>
+                            <td>
+                                <span data-key="cost">R$ 0,20 &ndash; R$ 0,55 / Pág.</span><br />
+                                <small style="color: var(--text-muted);">Cartuchos Corante/Pigmento</small>
+                            </td>
+                            <td>
+                                Fotografias de alta fidelidade cromática, provas gráficas de estúdio, ambiente doméstico e corporativo leve.
+                            </td>
+                        </tr>
+
+                        <!-- Row 3: Inkjet Piezo -->
+                        <tr data-category="fluid">
+                            <td>
+                                <strong data-key="name">Jato Piezoelétrico</strong><br />
+                                <span class="mono-tag">Cristal Cerâmico PZT Flex</span>
+                            </td>
+                            <td>
+                                <span data-key="speed">20 &ndash; 45 PPM</span><br />
+                                <span class="spec-badge hi-res">Disparo a Frio</span>
+                            </td>
+                            <td>
+                                <span data-key="dpi">5760 x 1440 DPI</span><br />
+                                <small style="color: var(--text-muted);">Volume Variável VSDT</small>
+                            </td>
+                            <td>
+                                <span data-key="cost">R$ 0,03 &ndash; R$ 0,12 / Pág.</span><br />
+                                <small style="color: var(--text-muted);">Tanque Contínuo (EcoTank)</small>
+                            </td>
+                            <td>
+                                Comunicação visual, estamparia têxtil por sublimação, impressão de tintas UV sobre substratos rígidos e cerâmicos.
+                            </td>
+                        </tr>
+
+                        <!-- Row 4: Laser Xerography -->
+                        <tr data-category="laser">
+                            <td>
+                                <strong data-key="name">Xerografia a Laser</strong><br />
+                                <span class="mono-tag">Ciclo em 6 Etapas OPC</span>
+                            </td>
+                            <td>
+                                <span data-key="speed">25 &ndash; 85+ PPM</span><br />
+                                <span class="spec-badge fast">Alta Produção</span>
+                            </td>
+                            <td>
+                                <span data-key="dpi">1200 x 1200 DPI</span><br />
+                                <small style="color: var(--text-muted);">Linhas Nítidas Micro-Toner</small>
+                            </td>
+                            <td>
+                                <span data-key="cost">R$ 0,06 &ndash; R$ 0,18 / Pág.</span><br />
+                                <small style="color: var(--text-muted);">Pó de Toner Polimérico</small>
+                            </td>
+                            <td>
+                                Ambientes corporativos de grande porte, birôs de impressão, relatórios financeiros e documentos jurídicos volumosos.
+                            </td>
+                        </tr>
+
+                        <!-- Row 5: 3D FDM -->
+                        <tr data-category="additive">
+                            <td>
+                                <strong data-key="name">Impressão 3D FDM</strong><br />
+                                <span class="mono-tag">Extrusão Termoplástica</span>
+                            </td>
+                            <td>
+                                <span data-key="speed">30 &ndash; 300 mm/s</span><br />
+                                <span class="spec-badge additive">Trajetória G-Code</span>
+                            </td>
+                            <td>
+                                <span data-key="dpi">Camadas de 50 a 300 &mu;m</span><br />
+                                <small style="color: var(--text-muted);">Bico de 0.4 mm</small>
+                            </td>
+                            <td>
+                                <span data-key="cost">R$ 90 &ndash; R$ 180 / kg</span><br />
+                                <small style="color: var(--text-muted);">Carretéis PLA, PETG, ABS</small>
+                            </td>
+                            <td>
+                                Prototipagem estrutural rápida, gabaritos industriais, peças técnicas funcionais, maquetes de arquitetura.
+                            </td>
+                        </tr>
+
+                        <!-- Row 6: 3D SLA -->
+                        <tr data-category="additive">
+                            <td>
+                                <strong data-key="name">Impressão 3D SLA</strong><br />
+                                <span class="mono-tag">Fotopolimerização UV 405nm</span>
+                            </td>
+                            <td>
+                                <span data-key="speed">20 &ndash; 80 mm/h</span><br />
+                                <span class="spec-badge hi-res">Cura Óptica</span>
+                            </td>
+                            <td>
+                                <span data-key="dpi">Camadas de 10 a 50 &mu;m</span><br />
+                                <small style="color: var(--text-muted);">Pixel XY de 25 &mu;m</small>
+                            </td>
+                            <td>
+                                <span data-key="cost">R$ 180 &ndash; R$ 450 / Litro</span><br />
+                                <small style="color: var(--text-muted);">Resina Fotossensível Líquida</small>
+                            </td>
+                            <td>
+                                Alinhadores ortodônticos, modelos odontológicos, joalheria para fundição de precisão e miniaturas de colecionador.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Head-to-Head Comparison Arena -->
+            <section class="arena-section" aria-label="Arena de Comparação Direta">
+                <div class="arena-header">
+                    <span class="mono-tag">// BENCHMARK INTERATIVO</span>
+                    <h2 class="kinetic-title">Arena de Comparação Direta</h2>
+                    <p>Selecione duas tecnologias para avaliar as vantagens e desvantagens de engenharia em tempo real.</p>
+                </div>
+
+                <div class="arena-selectors-row">
+                    <select id="arena-select-a" class="arena-select" aria-label="Selecione a primeira tecnologia">
+                        <option value="dot-matrix">Matricial de Impacto</option>
+                        <option value="inkjet">Jato de Tinta DoD</option>
+                        <option value="laser" selected>Xerografia a Laser</option>
+                        <option value="3d-fdm">Impressão 3D FDM</option>
+                        <option value="3d-sla">Impressão 3D SLA</option>
+                    </select>
+
+                    <div class="arena-vs-badge" aria-hidden="true">VS</div>
+
+                    <select id="arena-select-b" class="arena-select" aria-label="Selecione a segunda tecnologia">
+                        <option value="dot-matrix">Matricial de Impacto</option>
+                        <option value="inkjet" selected>Jato de Tinta DoD</option>
+                        <option value="laser">Xerografia a Laser</option>
+                        <option value="3d-fdm">Impressão 3D FDM</option>
+                        <option value="3d-sla">Impressão 3D SLA</option>
+                    </select>
+                </div>
+
+                <div class="arena-comparison-grid">
+                    <!-- Card A -->
+                    <article class="arena-card arena-a">
+                        <span class="mono-tag" style="color: var(--accent-cyan);">// MOTOR CANDIDATO A</span>
+                        <h3 id="arena-title-a">Xerografia a Laser</h3>
+                        <p id="arena-app-a" style="margin-bottom: 2rem; color: var(--text-secondary);">Documentos Corporativos de Alto Volume</p>
+
+                        <div class="metric-bar-group">
+                            <div class="metric-bar-item">
+                                <div class="metric-bar-label"><span>Velocidade de Produção:</span> <span>92%</span></div>
+                                <div class="metric-bar-track"><div id="arena-fill-speed-a" class="metric-bar-fill" style="width: 92%;"></div></div>
+                            </div>
+                            <div class="metric-bar-item">
+                                <div class="metric-bar-label"><span>Nitidez de Resolução:</span> <span>80%</span></div>
+                                <div class="metric-bar-track"><div id="arena-fill-dpi-a" class="metric-bar-fill" style="width: 80%;"></div></div>
+                            </div>
+                            <div class="metric-bar-item">
+                                <div class="metric-bar-label"><span>Eficiência Econômica:</span> <span>85%</span></div>
+                                <div class="metric-bar-track"><div id="arena-fill-cost-a" class="metric-bar-fill" style="width: 85%;"></div></div>
+                            </div>
+                            <div class="metric-bar-item">
+                                <div class="metric-bar-label"><span>Durabilidade Mecânica:</span> <span>88%</span></div>
+                                <div class="metric-bar-track"><div id="arena-fill-dur-a" class="metric-bar-fill" style="width: 88%;"></div></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card B -->
+                    <article class="arena-card arena-b">
+                        <span class="mono-tag" style="color: var(--accent-violet);">// MOTOR CANDIDATO B</span>
+                        <h3 id="arena-title-b">Jato de Tinta DoD</h3>
+                        <p id="arena-app-b" style="margin-bottom: 2rem; color: var(--text-secondary);">Fotografia de Galeria &amp; Comunicação Visual</p>
+
+                        <div class="metric-bar-group">
+                            <div class="metric-bar-item">
+                                <div class="metric-bar-label"><span>Velocidade de Produção:</span> <span>65%</span></div>
+                                <div class="metric-bar-track"><div id="arena-fill-speed-b" class="metric-bar-fill" style="width: 65%;"></div></div>
+                            </div>
+                            <div class="metric-bar-item">
+                                <div class="metric-bar-label"><span>Nitidez de Resolução:</span> <span>95%</span></div>
+                                <div class="metric-bar-track"><div id="arena-fill-dpi-b" class="metric-bar-fill" style="width: 95%;"></div></div>
+                            </div>
+                            <div class="metric-bar-item">
+                                <div class="metric-bar-label"><span>Eficiência Econômica:</span> <span>50%</span></div>
+                                <div class="metric-bar-track"><div id="arena-fill-cost-b" class="metric-bar-fill" style="width: 50%;"></div></div>
+                            </div>
+                            <div class="metric-bar-item">
+                                <div class="metric-bar-label"><span>Durabilidade Mecânica:</span> <span>60%</span></div>
+                                <div class="metric-bar-track"><div id="arena-fill-dur-b" class="metric-bar-fill" style="width: 60%;"></div></div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="footer-main">
+        <div class="container">
+            <div class="footer-bottom">
+                <span>&copy; 2026 PRINTX ENGINEERING RESEARCH. ATIVIDADE ACADÊMICA A1.</span>
+                <span>MATRIZ COMPARATIVA DE ESPECIFICAÇÕES &bull; ARENA INTERATIVA &bull; PT-BR</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Production CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Modular Script Engines -->
+    <script src="canvas3d.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
